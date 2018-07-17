@@ -21,6 +21,7 @@ const DialogContainer = ({showDialog, setShowDialog}) => {
                 header="Header"
                 body="Body"
                 buttonOK="OK"
+                colorTop="#e74c3c"
                 buttonNO="NO"
                 funcBackdrop={(e) => {onClick(e, "confirm1")}}
                 funcButtonOK={(e) => {onClick(e, "confirm1")}}

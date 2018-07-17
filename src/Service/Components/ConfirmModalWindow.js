@@ -64,7 +64,7 @@ class ConfirmModalWindow extends Component {
         }
         return (
             <ConfirmModal visible={visible} onClickBackdrop={this.props.funcBackdrop}>
-                <div className="modal-header">
+                <div className="modal-header" style={{borderTop: "solid 7px "+this.props.colorTop}}>
                     <h5 className="modal-title">{this.props.header}</h5>
                 </div>
                 {this.showBody()}
