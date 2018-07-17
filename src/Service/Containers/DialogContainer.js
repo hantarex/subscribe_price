@@ -17,17 +17,18 @@ const DialogContainer = ({showDialog, setShowDialog}) => {
             <Button onClick={(e) => onClick(e, "confirm1")}>Show alert1</Button>
             <Button onClick={(e) => onClick(e, "confirm2")}>Show alert2</Button>
             <ConfirmModalWindow
+                className="red"
                 name="confirm1"
                 header="Header"
                 body="Body"
                 buttonOK="OK"
-                colorTop="#e74c3c"
                 buttonNO="NO"
                 funcBackdrop={(e) => {onClick(e, "confirm1")}}
                 funcButtonOK={(e) => {onClick(e, "confirm1")}}
                 funcButtonNO={(e) => {onClick(e, "confirm1")}}
             />
             <ConfirmModalWindow
+                className="red"
                 name="confirm2"
                 header="Header2"
                 body="Body2"
