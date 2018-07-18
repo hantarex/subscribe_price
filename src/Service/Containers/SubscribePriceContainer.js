@@ -31,7 +31,7 @@ const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfir
         }
         else {
             return (
-                <div className={css(ConfirmModalStyle.fade)}>
+                <div className={css(ConfirmModalStyle.fade, ConfirmModalStyle.subscribe_price)}>
                     <SubscribeCheckBoxPriceComponent/>
                     <ConfirmModalWindow
                         className="green"

@@ -7,6 +7,7 @@
     "aphrodite": "^2.2.2",
     "aphrodite-jss": "^2.0.0",
     "axios": "^0.18.0",
+    "axios-error": "^0.7.4",
     "bootstrap": "^4.1.2",
     "prop-types": "latest",
     "react": "^16.4.1",
@@ -23,8 +24,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run build-rename",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-rename": "npm run build-rename-js && npm run build-rename-css",
+    "build-rename-js": "renamer --regex --find \"main\\.[^\\.]+\\.js\" --replace subscribe.js \"build/static/js/*.js\"",
+    "build-rename-css": "renamer --regex --find \"main\\.[^\\.]+\\.css\" --replace subscribe.css \"build/static/css/*.css\"",
+    "build-rename-map": "renamer -v --regex --find \"main\\.[^\\.]+\\.map\" --replace subscribe.map \"build/static/**/*.map\""
+  },
+  "devDependencies": {
+    "renamer": "^0.7.3"
   }
 }

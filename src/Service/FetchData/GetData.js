@@ -12,11 +12,11 @@ export default function() {
     }
     return (dispatch) => {
         axios.defaults.withCredentials = true;
-        axios.post(Const.backendUrl + "?op=subscribe_price&use=get_info&id=" + id).then(res => {
+        axios.defaults.maxRedirects = 0;
+        axios.post(Const.backendUrl + "?op=subscribe_price&use=get_info&id=" + id,).then(res => {
             dispatch(setData({...res.data, ...{id: id}},"SET_INFO"));
             dispatch(MainLoadingActions(false));
         }).catch(error => {
-            console.log(error);
             dispatch(setData("Ошибка входа в личный кабинет!","ERROR_BLOCK_TEXT"));
             dispatch(setData(1,"ERROR_BLOCK_ACTIVE"));
             dispatch(MainLoadingActions(false));

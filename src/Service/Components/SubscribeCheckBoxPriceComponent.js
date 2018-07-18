@@ -6,15 +6,11 @@ const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
     const showNote = () => {
         if(!data.is_member){
             return (
-                <div>
-                    {data.note}
-                </div>
+                <div dangerouslySetInnerHTML={{__html:'* - ' + data.note}} />
             )
         } else if(!data.fill_email){
             return (
-                <div>
-                    {data.note_email}
-                </div>
+                <div dangerouslySetInnerHTML={{__html:'* - ' + data.note_email}} />
             )
         }
     };
@@ -44,7 +40,6 @@ const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
             confirm: confirm
         });
     };
-
     return (
         <div>
             <label>
@@ -52,10 +47,12 @@ const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
                     name="isGoing"
                     type="checkbox"
                     checked={data.check ? data.check : false}
-                    disabled={!data.is_member && !data.fill_email}
+                    disabled={(!data.is_member || !data.fill_email)}
                     onChange={(e) =>{ handleInputChange(e)} }
                 />
-                {data.label}
+                <span>
+                    {data.label}
+                </span>
             </label>
             {showNote()}
         </div>
