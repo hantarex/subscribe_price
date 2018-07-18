@@ -38,22 +38,6 @@ const DialogContainer = ({showDialog, setShowDialog}) => {
                 funcButtonOK={(e) => {onClick(e, "confirm2")}}
                 funcButtonNO={(e) => {onClick(e, "confirm2")}}
             />
-            {/*<ConfirmModal visible={showDialog} onClickBackdrop={onClick}>*/}
-                {/*<div className="modal-header">*/}
-                    {/*<h5 className="modal-title">Red Alert!</h5>*/}
-                {/*</div>*/}
-                {/*<div className="modal-body">*/}
-                    {/*<p>Enemy vessel approaching!</p>*/}
-                {/*</div>*/}
-                {/*<div className="modal-footer">*/}
-                    {/*<button type="button" className="btn btn-secondary" onClick={onClick}>*/}
-                        {/*Panic*/}
-                    {/*</button>*/}
-                    {/*<button type="button" className="btn btn-primary" onClick={onClick}>*/}
-                        {/*Fire phasers*/}
-                    {/*</button>*/}
-                {/*</div>*/}
-            {/*</ConfirmModal>*/}
         </div>
     )
 };

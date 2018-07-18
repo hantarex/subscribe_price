@@ -2,7 +2,9 @@ export function ConfirmWindowReducer(state={}, action) {
     switch (action.type) {
         case "SHOW_CONFIRM_WINDOW":
             state[action.payload.name]={
-                visible: action.payload.visible
+                visible: action.payload.visible,
+                head: action.payload.head,
+                title: action.payload.title,
             };
             return {
                 ...state

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Provider} from 'react-redux';
 import DialogComponent from "./Service/Components/DialogComponent";
 import SubscribePriceStore from './Service/Stores/SubscribePriceStore'
+import SubscribePriceContainer from "./Service/Containers/SubscribePriceContainer";
 
 const store = SubscribePriceStore();
 
@@ -20,7 +21,7 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-              <DialogComponent />
+              <SubscribePriceContainer />
             </Provider>
         );
     }

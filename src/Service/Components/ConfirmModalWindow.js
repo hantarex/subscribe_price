@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import ConfirmModal from 'react-bootstrap4-modal';
 import {connect} from "react-redux";
 import {ConfirmWindowActions} from "../Actions/ConfirmWindowActions";
+import ConfirmModalStyle from "../Styles/ConfirmModalStyle";
+import {css} from 'aphrodite-jss';
 
 class ConfirmModalWindow extends Component {
     static propTypes = {
         visible: PropTypes.bool,
-        header: PropTypes.string.isRequired,
+        header: PropTypes.string,
         body: PropTypes.string,
         name: PropTypes.string.isRequired,
         buttonOK: PropTypes.string,
@@ -20,18 +22,14 @@ class ConfirmModalWindow extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.onClick=this.onClick.bind(this);
         this.showBody=this.showBody.bind(this);
         this.showButtonOK=this.showButtonOK.bind(this);
     }
-    onClick(){
-        console.log("ok", this.props);
-    }
-    showBody(){
-        if(this.props.body) {
+    showBody(body){
+        if(body) {
             return (
                 <div className="modal-body">
-                    <p>{this.props.body}</p>
+                    <p dangerouslySetInnerHTML={{__html:body}} />
                 </div>
             )
         }
@@ -40,7 +38,7 @@ class ConfirmModalWindow extends Component {
     showButtonOK(){
         if(this.props.buttonOK) {
             return (
-                <button type="button" className="btn btn-secondary" onClick={this.props.funcButtonOK}>
+                <button type="button" className="btn btn-success" onClick={this.props.funcButtonOK}>
                     {this.props.buttonOK}
                 </button>
             )
@@ -59,19 +57,27 @@ class ConfirmModalWindow extends Component {
     }
     render() {
         let visible=false;
+        let body;
+        let head;
         if(this.props.name in this.props.confirm){
             visible = this.props.confirm[this.props.name].visible;
         }
+
+        if(this.props.name in this.props.confirm){
+            body = this.props.confirm[this.props.name].title;
+            head = this.props.confirm[this.props.name].head;
+        }
+
         return (
             <ConfirmModal
                 visible={visible}
                 onClickBackdrop={this.props.funcBackdrop}
-                className={this.props.className}
+                className={css(ConfirmModalStyle[this.props.className])}
             >
                 <div className="modal-header">
-                    <h5 className="modal-title">{this.props.header}</h5>
+                    <h5 className="modal-title">{head}</h5>
                 </div>
-                {this.showBody()}
+                {this.showBody(body)}
                 <div className="modal-footer">
                     {this.showButtonOK()}
                     {this.showButtonNO()}
