@@ -14,15 +14,11 @@ const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
             )
         } else if(data.check){
             return (
-                <div style={{color: "green"}}>
-                    * - при изменении цены, мы отправим уведомление на Вашу почту
-                </div>
+                <div dangerouslySetInnerHTML={{__html:'* - ' + data.confirm_title}} />
             )
         } else{
             return (
-                <div>
-                    * - выберете, если хотите получить уведомление о снижении цены
-                </div>
+                <div dangerouslySetInnerHTML={{__html:'* - ' + data.confirm_motivation}} />
             )
         }
     };

@@ -16,6 +16,7 @@ export function Data(state=[], action) {
                     confirm_head: action.payload.confirm_head,
                     confirm_title: action.payload.confirm_title,
                     confirm_head_break: action.payload.confirm_head_break,
+                    confirm_motivation: action.payload.confirm_motivation,
                 }
             };
         case 'SET_CHECK':
