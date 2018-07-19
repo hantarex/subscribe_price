@@ -21,6 +21,9 @@ export default StyleSheet.create({
             borderTop: 'solid 7px #2ecc71'
         }
     },
+    greenText: {
+        color: '#2ecc71'
+    },
     fade: {
         animation: 'fadein 2s',
         '@global': {

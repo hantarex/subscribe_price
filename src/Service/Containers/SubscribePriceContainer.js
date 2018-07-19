@@ -21,11 +21,12 @@ const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfir
                 <div />
             )
         } else if (errorBlock.active === 1) {
+            console.log(errorBlock.text);
             return (
                 <div>
-                    <div className="error">
-                        {errorBlock.text}
-                    </div>
+                    {/*<div className="error">*/}
+                        {/*{errorBlock.text}*/}
+                    {/*</div>*/}
                 </div>
             )
         }

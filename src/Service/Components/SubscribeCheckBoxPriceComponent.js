@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux"
 import SendCheck from "../FetchData/SendCheck";
+import {css} from 'aphrodite-jss';
+import ConfirmModalStyle from '../Styles/ConfirmModalStyle'
 
 const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
     const showNote = () => {
@@ -14,7 +16,7 @@ const SubscribeCheckBoxPriceComponent = ({data, sendCheck}) => {
             )
         } else if(data.check){
             return (
-                <div dangerouslySetInnerHTML={{__html:'* - ' + data.confirm_title}} />
+                <div className={css(ConfirmModalStyle.greenText)} dangerouslySetInnerHTML={{__html:'* - ' + data.confirm_title}} />
             )
         } else{
             return (
