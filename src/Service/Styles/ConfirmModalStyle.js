@@ -40,5 +40,16 @@ export default StyleSheet.create({
         '& label':{
             margin: 0
         }
+    },
+    subscribe_item: {
+        backgroundColor: '#e2f0f5',
+        borderRadius: '3px',
+        padding: '5px 9px',
+        '& span':{
+            marginLeft: '10px'
+        },
+        '& label':{
+            margin: 0
+        }
     }
 })

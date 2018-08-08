@@ -16,13 +16,13 @@ export default function (data) {
             ).then(res => {
             dispatch(ConfirmWindowActions(data.confirm, "SHOW_CONFIRM_WINDOW"));
         }).catch(error => {
-            dispatch(ConfirmWindowActions({
-                visible: true,
-                name: "exception",
-                head: 'Произошла ошибка!',
-                title: error.response.data.error
-            }, "SHOW_CONFIRM_WINDOW"));
-            dispatch(setData(!data.check,"SET_CHECK"));
+            // dispatch(ConfirmWindowActions({
+            //     visible: true,
+            //     name: "exception",
+            //     head: 'Произошла ошибка!',
+            //     title: error.response.data.error
+            // }, "SHOW_CONFIRM_WINDOW"));
+            // dispatch(setData(!data.check,"SET_CHECK"));
         })
     };
 }

@@ -1,31 +1,32 @@
-export function ErrorBlock(state={}, action) {
+export function DataItem(state=[], action) {
     switch (action.type) {
-        case 'ERROR_BLOCK_ACTIVE':
+        case 'SET_INFO_ITEM':
             return {
                 ...state,
                 ...{
-                    active: action.payload
+                    options: action.payload.options ? action.payload.options : {},
+                    submit: action.payload.submit,
                 }
             };
-        case 'ERROR_BLOCK_ACTIVE_ITEM':
+        case 'SET_CHECK_ITEM':
             return {
                 ...state,
                 ...{
-                    active: action.payload
+                    check: action.payload
                 }
             };
-        case "ERROR_BLOCK_TEXT":
+        case 'SET_TARGET_ITEM':
             return {
                 ...state,
                 ...{
-                    text: action.payload
+                    target: action.payload.target
                 }
             };
-        case "ERROR_BLOCK_TEXT_ITEM":
+        case 'ON_SUBMIT':
             return {
                 ...state,
                 ...{
-                    text: action.payload
+                    onSubmit: action.payload
                 }
             };
         default:

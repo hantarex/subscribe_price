@@ -1,6 +1,6 @@
-export const MainLoadingActions = (bool) => {
+export const MainLoadingActions = (bool, type = "MAIN_LOADING") => {
     return {
-        type: "MAIN_LOADING",
+        type: type,
         payload: bool
     }
 };

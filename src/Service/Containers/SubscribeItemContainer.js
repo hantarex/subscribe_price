@@ -1,13 +1,13 @@
 import React from 'react'
-import SubscribeCheckBoxPriceComponent from "../Components/SubscribeCheckBoxPriceComponent";
 import {connect} from "react-redux";
-import GetData from "../FetchData/GetData";
 import {css} from 'aphrodite-jss';
 import ConfirmModalStyle from "../Styles/ConfirmModalStyle";
 import ConfirmModalWindow from "../Components/ConfirmModalWindow";
 import {ConfirmWindowActions} from "../Actions/ConfirmWindowActions";
+import GetDataItem from "../FetchData/GetDataItem";
+import SubscribeCheckBoxItemComponent from "../Components/SubscribeCheckBoxItemComponent";
 
-const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfirm, data}) => {
+const SubscribeItemContainer = ({mainLoading, onGetData, errorBlock, showConfirm, data}) => {
     if(mainLoading) {
         onGetData();
     }
@@ -16,7 +16,7 @@ const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfir
         e.preventDefault();
     };
     const showMain = () => {
-        if (mainLoading) {
+        if (mainLoading || data.options === undefined) {
             return (
                 <div />
             )
@@ -32,24 +32,22 @@ const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfir
         }
         else {
             return (
-                <div className={css(ConfirmModalStyle.subscribe_price)}>
-                    <SubscribeCheckBoxPriceComponent/>
+                <div className={css(ConfirmModalStyle.subscribe_item)}>
+                    <SubscribeCheckBoxItemComponent/>
                     <ConfirmModalWindow
                         className="green"
-                        name="confirm"
+                        name="confirm_item"
                         buttonOK="Да"
-                        funcBackdrop={(e) => {onClickConfirm(e, "confirm")}}
-                        funcButtonOK={(e) => {onClickConfirm(e, "confirm")}}
+                        funcBackdrop={(e) => {onClickConfirm(e, "confirm_item")}}
+                        funcButtonOK={(e) => {onClickConfirm(e, "confirm_item")}}
                     />
                     <ConfirmModalWindow
                         className="red"
-                        name="exception"
-                        header="Header2"
-                        body="Body2"
+                        name="exception_item"
                         buttonNO="Закрыть"
-                        funcBackdrop={(e) => {onClickConfirm(e, "exception")}}
-                        funcButtonOK={(e) => {onClickConfirm(e, "exception")}}
-                        funcButtonNO={(e) => {onClickConfirm(e, "exception")}}
+                        funcBackdrop={(e) => {onClickConfirm(e, "exception_item")}}
+                        funcButtonOK={(e) => {onClickConfirm(e, "exception_item")}}
+                        funcButtonNO={(e) => {onClickConfirm(e, "exception_item")}}
                     />
                 </div>
             )
@@ -62,13 +60,13 @@ const SubscribePriceContainer = ({mainLoading, onGetData, errorBlock, showConfir
 
 export default connect(
     state => ({
-        mainLoading: state.mainLoading,
-        errorBlock: state.errorBlock,
-        data: state.data,
+        mainLoading: state.mainLoadingItem,
+        errorBlock: state.errorBlockItem,
+        data: state.dataItem,
     }),
     dispatch => ({
             onGetData: () => {
-                dispatch(GetData())
+                dispatch(GetDataItem())
             },
             showConfirm: (name) => {
                 dispatch(ConfirmWindowActions({
@@ -78,5 +76,5 @@ export default connect(
             }
         }
     )
-)(SubscribePriceContainer)
+)(SubscribeItemContainer)
 
