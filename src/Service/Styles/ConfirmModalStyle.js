@@ -45,9 +45,9 @@ export default StyleSheet.create({
         backgroundColor: '#e2f0f5',
         borderRadius: '3px',
         padding: '5px 9px',
-        '& span':{
-            marginLeft: '10px'
-        },
+        // '& span':{
+        //     marginLeft: '10px'
+        // },
         '& label':{
             margin: 0
         }
